@@ -1,5 +1,6 @@
 package com.example.homework_016.ui
 
+import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.homework_016.db.TestDao
@@ -19,7 +20,8 @@ class AddViewModel: ViewModel() {
 
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                testDao.insertItem(TestEntity("title", "description some text", "https://cdn3.photostockeditor.com/t/0708/toy-selective-focus-photography-of-two-white-lego-minifigures-lego-lego-image.jpg"))
+                //testDao.insertItem(TestEntity("title", "description some text", "https://cdn3.photostockeditor.com/t/0708/toy-selective-focus-photography-of-two-white-lego-minifigures-lego-lego-image.jpg"))
+               d("---", "title is ${item.title}")
                 testDao.insertItem(item)
             }
 

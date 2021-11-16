@@ -12,7 +12,6 @@ import com.example.homework_016.db.TestEntity
 import com.example.homework_016.extension.glideExtension
 
 //private val onItemClicked: (TestEntity)-> Unit
-/*
 
 class TestAdapter() : ListAdapter<TestEntity, TestAdapter.TestViewHolder>(DiffCallback) {
 
@@ -57,4 +56,4 @@ class TestAdapter() : ListAdapter<TestEntity, TestAdapter.TestViewHolder>(DiffCa
     }
 
 
-}*/
+}

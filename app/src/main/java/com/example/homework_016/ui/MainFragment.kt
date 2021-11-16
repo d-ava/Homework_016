@@ -2,36 +2,46 @@ package com.example.homework_016.ui
 
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homework_016.R
+import com.example.homework_016.TestAdapter
 import com.example.homework_016.TestRAdapter
 import com.example.homework_016.databinding.MainFragmentBinding
+import com.example.homework_016.db.TestDao
+import com.example.homework_016.db.TestDatabase
 import com.example.homework_016.db.TestEntity
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.withContext
 
 
 class MainFragment :
     BaseFragment<MainFragmentBinding, MainViewModel>(MainFragmentBinding::inflate) {
     override fun getViewModel() = MainViewModel::class.java
 
-   // private lateinit var recyclerView: RecyclerView
+    // private lateinit var recyclerView: RecyclerView
     private lateinit var adapterR: TestRAdapter
+
+    private lateinit var adapterList: TestAdapter
+
 
     override var useSharedViewModel = false
 
-    private val testList = mutableListOf(TestEntity("title", "description some text", "https://cdn3.photostockeditor.com/t/0708/toy-selective-focus-photography-of-two-white-lego-minifigures-lego-lego-image.jpg"),
-        TestEntity("titlergegfsdfe2", "description some text222", "https://cdn3.photostockeditor.com/t/0708/toy-selective-focus-photography-of-two-white-lego-minifigures-lego-lego-image.jpg"),
-        TestEntity("tigsdfgsdfgsdtle3", "description some text555", "https://cdn3.photostockeditor.com/t/0708/toy-selective-focus-photography-of-two-white-lego-minifigures-lego-lego-image.jpg"),
-        TestEntity("titfgsdfgsdfgle", "description some text", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/2_duplo_lego_bricks.jpg/200px-2_duplo_lego_bricks.jpg"))
+
+
+
 
     override fun start() {
         setListeners()
         setRecycler()
-      //  adapterR.setData(testList)
+
 
         lifecycleScope.launchWhenStarted {
             viewModel.readItems.collect {
-                adapterR.setData(it.toMutableList())
+               // adapterR.setData(it.toMutableList())
+                adapterList.submitList(it.toMutableList())
             }
         }
     }
@@ -43,30 +53,25 @@ class MainFragment :
         binding.btnAdd.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToAddFragment())
         }
+
+        binding.btnAddDialog.setOnClickListener {
+
+            findNavController().navigate(MainFragmentDirections.actionMainFragmentToAddItemFragment())
+        }
     }
 
-    private fun setRecycler(){
+    private fun setRecycler() {
+
+
+      //  adapterR = TestRAdapter()
+      //  binding.recycler.adapter = adapterR
+      //  binding.recycler.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        adapterList= TestAdapter()
+        binding.recycler.adapter = adapterList
+        binding.recycler.layoutManager = GridLayoutManager(requireContext(),3)
 
 
 
-        adapterR = TestRAdapter()
-        binding.recycler.adapter = adapterR
-        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
-
-      /* lifecycleScope.launchWhenStarted {
-           viewModel.readItems.observe(viewLifecycleOwner){
-               adapterR.setData(it)
-           }
-       }*/
-
-
-
-
-       /* lifecycleScope.launchWhenStarted {
-            viewModel.getAllItem().collect {
-                adapterR.setData(it)
-            }
-        }
-*/
     }
 }
