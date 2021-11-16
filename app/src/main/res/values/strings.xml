@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Homework_016</string>
+    <string name="sample_description">sample description</string>
+    <string name="sample_title">sample title</string>
 </resources>

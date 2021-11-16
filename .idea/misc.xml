@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/Homework_016/app/src/main/res/drawable/ic_baseline_anchor_24.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Homework_016/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Homework_016/app/src/main/res/layout/add_fragment.xml" value="0.5" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/Homework_016/app/src/main/res/layout/item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Homework_016/app/src/main/res/layout/item.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Homework_016/app/src/main/res/layout/main_fragment.xml" value="0.26313405797101447" />
       </map>
     </option>

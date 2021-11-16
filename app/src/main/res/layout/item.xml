@@ -7,11 +7,12 @@
     android:layout_margin="10dp">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:scaleType="centerCrop"
         android:id="@+id/ivImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_anchor_24"
+        android:src="@drawable/ic_launcher_background"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -20,14 +21,14 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/ivImage"
-        tools:text="sample text title" />
+        android:text="@string/sample_title" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        tools:text="sample text description" />
+        android:text="@string/sample_description" />
 
 
 
