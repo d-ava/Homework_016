@@ -66,7 +66,8 @@ class MainFragment :
       //  binding.recycler.layoutManager = GridLayoutManager(requireContext(), 2)
 
         adapterList= TestAdapter{
-            view?.findNavController()?.navigate(MainFragmentDirections.actionMainFragmentToUpdateDeleteFragment())
+            val action = MainFragmentDirections.actionMainFragmentToUpdateDeleteFragment(it)
+            activity?.findNavController(R.id.nav_host_fragment)?.navigate(action)
         }
         binding.recycler.adapter = adapterList
         binding.recycler.layoutManager = GridLayoutManager(requireContext(),3)

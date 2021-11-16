@@ -16,13 +16,14 @@ interface TestDao {
     suspend fun insertItem(vararg item: TestEntity)
 
 
-
     @Query("SELECT * FROM test_table")
     fun getAll(): Flow<List<TestEntity>>
 
     @Query("DELETE FROM test_table WHERE title = :title")
-    suspend fun deleteItem(title : String)
+    suspend fun deleteItem(title: String)
 
+    @Query("UPDATE test_table SET title = :title, description = :description, url = :url WHERE title = :title")
+    suspend fun updateItem(title: String, description: String, url: String): Int
 
 
 }

@@ -33,5 +33,8 @@
         <action
             android:id="@+id/action_addItemFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="item_details"
+            app:argType="com.example.homework_016.db.TestEntity" />
     </dialog>
 </navigation>

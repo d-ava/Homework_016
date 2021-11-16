@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.homework_016.databinding.FragmentUpdateOrDeleteItemListDialogBinding
 import com.example.homework_016.db.TestDao
 import com.example.homework_016.db.TestDatabase
@@ -17,6 +18,8 @@ import kotlinx.coroutines.withContext
 class UpdateOrDeleteItemFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentUpdateOrDeleteItemListDialogBinding? = null
+
+    private val itemDetailArg by navArgs<UpdateOrDeleteItemFragmentArgs>()
 
     private var testDao: TestDao = TestDatabase.db.testDao()
 
@@ -39,6 +42,8 @@ class UpdateOrDeleteItemFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.etDescription.setText(itemDetailArg.itemDetails.description)
+        binding.etTitle.setText(itemDetailArg.itemDetails.title)
         setListeners()
     }
 
@@ -67,6 +72,17 @@ class UpdateOrDeleteItemFragment : BottomSheetDialogFragment() {
             lifecycleScope.launchWhenStarted {
                 withContext(IO){
                     testDao.deleteItem(binding.etTitle.text.toString())
+                }
+            }
+        }
+
+        binding.btnUpdate.setOnClickListener {
+            val title = binding.etTitle.text.toString()
+            val description = binding.etDescription.text.toString()
+            val url = binding.etUrl.text.toString()
+            lifecycleScope.launchWhenStarted {
+                withContext(IO){
+                    testDao.updateItem(title=title, description=description, url=url)
                 }
             }
         }
