@@ -14,7 +14,7 @@
             android:id="@+id/action_mainFragment_to_addFragment"
             app:destination="@id/addFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_addItemFragment"
+            android:id="@+id/action_mainFragment_to_updateDeleteFragment"
             app:destination="@id/addItemFragment" />
     </fragment>
     <fragment
@@ -28,7 +28,7 @@
     </fragment>
     <dialog
         android:id="@+id/addItemFragment"
-        android:name="com.example.homework_016.ui.AddItemFragment"
+        android:name="com.example.homework_016.ui.UpdateOrDeleteItemFragment"
         android:label="AddItemFragment" >
         <action
             android:id="@+id/action_addItemFragment_to_mainFragment"

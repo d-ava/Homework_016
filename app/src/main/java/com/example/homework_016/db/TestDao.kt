@@ -14,12 +14,15 @@ interface TestDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(vararg item: TestEntity)
-   // suspend fun insertItem(item: TestEntity)
+
 
 
     @Query("SELECT * FROM test_table")
     fun getAll(): Flow<List<TestEntity>>
-   // fun getAll(): LiveData<List<TestEntity>>
+
+    @Query("DELETE FROM test_table WHERE title = :title")
+    suspend fun deleteItem(title : String)
+
 
 
 }

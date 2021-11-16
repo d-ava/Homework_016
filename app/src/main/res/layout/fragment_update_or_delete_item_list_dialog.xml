@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
 
         android:inputType="text"
-        android:hint="enter title"
+        android:hint="@string/enter_title"
         android:imeOptions="actionDone" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -21,7 +21,7 @@
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter description"
+        android:hint="@string/enter_description"
         android:imeOptions="actionDone" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -29,16 +29,24 @@
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter url"
+        android:hint="@string/enter_url"
         android:imeOptions="actionDone" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:background="@color/teal_700"
-        android:text="ADD" />
+        android:text="@string/update" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/teal_700"
+        android:text="@string/delete" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

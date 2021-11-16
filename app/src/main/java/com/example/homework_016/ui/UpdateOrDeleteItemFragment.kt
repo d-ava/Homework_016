@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.homework_016.databinding.FragmentAddItemListDialogBinding
+import com.example.homework_016.databinding.FragmentUpdateOrDeleteItemListDialogBinding
 import com.example.homework_016.db.TestDao
 import com.example.homework_016.db.TestDatabase
 import com.example.homework_016.db.TestEntity
@@ -14,9 +14,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 
-class AddItemFragment : BottomSheetDialogFragment() {
+class UpdateOrDeleteItemFragment : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentAddItemListDialogBinding? = null
+    private var _binding: FragmentUpdateOrDeleteItemListDialogBinding? = null
 
     private var testDao: TestDao = TestDatabase.db.testDao()
 
@@ -29,7 +29,7 @@ class AddItemFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentAddItemListDialogBinding.inflate(inflater, container, false)
+        _binding = FragmentUpdateOrDeleteItemListDialogBinding.inflate(inflater, container, false)
 
         return binding.root
 
@@ -46,8 +46,8 @@ class AddItemFragment : BottomSheetDialogFragment() {
     private fun setListeners() {
 
 
-        binding.btnAdd.setOnClickListener {
-            findNavController().navigate(AddItemFragmentDirections.actionAddItemFragmentToMainFragment())
+      /*  binding.btnAdd.setOnClickListener {
+            findNavController().navigate(UpdateOrDeleteItemFragmentDirections.actionAddItemFragmentToMainFragment())
             val title = binding.etTitle.text.toString()
             val description = binding.etDescription.text.toString()
             val url = binding.etUrl.text.toString()
@@ -60,6 +60,14 @@ class AddItemFragment : BottomSheetDialogFragment() {
 
 
 
+            }
+        }*/
+
+        binding.btnDelete.setOnClickListener {
+            lifecycleScope.launchWhenStarted {
+                withContext(IO){
+                    testDao.deleteItem(binding.etTitle.text.toString())
+                }
             }
         }
 

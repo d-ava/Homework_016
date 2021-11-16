@@ -13,7 +13,7 @@ import com.example.homework_016.extension.glideExtension
 
 //private val onItemClicked: (TestEntity)-> Unit
 
-class TestAdapter() : ListAdapter<TestEntity, TestAdapter.TestViewHolder>(DiffCallback) {
+class TestAdapter(private val onItemClicked: (TestEntity)-> Unit) : ListAdapter<TestEntity, TestAdapter.TestViewHolder>(DiffCallback) {
 
     companion object {
 
@@ -42,13 +42,19 @@ class TestAdapter() : ListAdapter<TestEntity, TestAdapter.TestViewHolder>(DiffCa
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
 
-        return TestViewHolder(
+        val viewHolder = TestViewHolder(
             ItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
+
+        viewHolder.itemView.setOnClickListener {
+            val position = viewHolder.absoluteAdapterPosition
+            onItemClicked(getItem(position))
+        }
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: TestViewHolder, position: Int) {
